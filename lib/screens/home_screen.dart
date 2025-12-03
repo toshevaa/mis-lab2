@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import '../services/api_service.dart';
-import '../widgets/category_card.dart';
-import '../models/category.dart';
-import 'category_meals_screen.dart';
-import 'random_meal_screen.dart';
+import 'package:mis_lab2/services/api_service.dart';
+import 'package:mis_lab2/widgets/category_card.dart';
+import 'package:mis_lab2/models/category.dart';
+import 'package:mis_lab2/screens/category_meals_screen.dart';
+import 'package:mis_lab2/screens/random_meal_screen.dart';
+import 'package:mis_lab2/screens/favorites_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -43,15 +44,21 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text('Recipes App'),
         backgroundColor: Colors.redAccent,
         foregroundColor: Colors.white,
-
         actions: [
+          IconButton(
+            icon: Icon(Icons.favorite),
+            onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => FavoritesScreen())),
+          ),
           IconButton(
             icon: Icon(Icons.casino),
             onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (_) => RandomMealScreen())),
-          )
+          ),
         ],
       ),
       body: Column(

@@ -8,18 +8,14 @@ import 'firebase_options.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
-  print("🔥 BACKGROUND MESSAGE: ${message.messageId}");
 }
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  print('Initializing Firebase...');
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  print('Firebase initialized');
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
@@ -27,7 +23,6 @@ void main() async {
     final fcmService = FirebaseMessagingService();
     await fcmService.initialize();
   } catch (e) {
-    print('Error initializing firebase messaging: $e');
   }
 
   runApp(RecipesApp());

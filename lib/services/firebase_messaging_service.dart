@@ -12,13 +12,11 @@ class FirebaseMessagingService {
       badge: true,
       sound: true,
     );
-    print('Permission: ${settings.authorizationStatus}');
 
     String? token = await _messaging.getToken();
-    print("FCM TOKEN: $token");
+    print("FCM token: $token");
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print("FOREGROUND FCM: ${message.notification?.title}");
 
       _localNotifications.show(
         message.hashCode,
